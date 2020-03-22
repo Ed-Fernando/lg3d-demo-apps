@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="jar" name="lg3d-demo-apps">
+
+    <property name="top.dir" location=".."/>
+    <property name="current.dir" location="."/>
+
+    <!-- Use my-build.properties to override default values in build.properties -->
+    <property file="my.build.properties"/>
+    <property file="build.properties"/>
+
+    <property name="project.name" value="${ant.project.name}"/>
+
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="${build-import.dir}/ant-contrib.jar"/>
+        </classpath>
+    </taskdef>
+    
+    <!-- Do platform/x11/environment specific setup common to all tasks -->
+    <import file="${build-import.dir}/build-setup.xml"/>
+
+    <target name="init" description="Initial set-up" unless="init.done">
+        <property name="init.done" value="true"/>
+
+        <mkdir dir="${build.classes.dir}"/>
+        <mkdir dir="${build.lib.dir}"/>
+    </target>
+
+    <target name="compile" depends="init"
+		description="Compile demo applications">
+        <javac debug="${build.debug}" 
+		deprecation="${build.showdeprecation}" 
+		destdir="${build.classes.dir}" 
+		nowarn="true" 
+		source="1.5" 
+		sourcepath=""
+		target="1.5">
+            <!-- To add something to the classpath: -->
+            <classpath>
+		<pathelement location="${classpath}"/>
+		<pathelement path="${j3d.classpath}"/>
+	    </classpath>
+	    <src path="${src.dir}"/>
+	    <include name="org/**"/>
+        </javac>
+
+        <!-- Temporary until we build demos into their own jars -->
+        <copy todir="${build.classes.dir}/org/jdesktop/lg3d/apps/cdviewer/resources">
+            <fileset dir="${src.dir}/org/jdesktop/lg3d/apps/cdviewer/resources"/>
+        </copy>
+        <copy todir="${build.classes.dir}/org/jdesktop/lg3d/apps/help/resources">
+            <fileset dir="${src.dir}/org/jdesktop/lg3d/apps/help/resources"/>
+        </copy>
+        <copy todir="${build.classes.dir}/org/jdesktop/lg3d/apps/tutorial/resources">
+            <fileset dir="${src.dir}/org/jdesktop/lg3d/apps/tutorial/resources"/>
+        </copy>
+        <copy todir="${build.classes.dir}/org/jdesktop/lg3d/apps/tapps/resources">
+            <fileset dir="${src.dir}/org/jdesktop/lg3d/apps/tapps/resources"/>
+        </copy>
+        <copy todir="${build.classes.dir}/org/jdesktop/lg3d/apps/screencapture/resources">
+            <fileset dir="${src.dir}/org/jdesktop/lg3d/apps/screencapture/resources"/>
+        </copy>
+        <copy todir="${build.classes.dir}/org/jdesktop/lg3d/apps/terminator/resources">
+            <fileset dir="${src.dir}/org/jdesktop/lg3d/apps/terminator/resources"/>
+        </copy>
+        <copy todir="${build.classes.dir}/org/jdesktop/lg3d/apps/launcher/resources">
+            <fileset dir="${src.dir}/org/jdesktop/lg3d/apps/launcher/resources"/>
+        </copy>
+        <!--<copy todir="${build.classes.dir}/org/jdesktop/lg3d/apps/modelviewer/resources">
+            <fileset dir="${src.dir}/org/jdesktop/lg3d/apps/modelviewer/resources"/>
+        </copy>-->
+        <delete dir="${build.classes.dir}/config/demo"/>
+        <copy todir="${build.classes.dir}/config/demo">
+            <fileset dir="${src.dir}/../config">
+<!-- Comment out following lines to remove tutorial from release -->
+<!--                <exclude name="**/tutorial*"/> 
+		<exclude name="**/swingnode*"/>-->
+            </fileset>
+        </copy>
+        
+        <!-- Include Test cases in build -->
+<!--
+        <copy todir="build/classes/config/demo">
+            <fileset dir="${src.dir}/../test_configs">
+            </fileset>
+        </copy>
+        <copy todir="${build.classes.dir}/org/jdesktop/lg3d/tests/resources">
+            <fileset dir="${src.dir}/org/jdesktop/lg3d/tests/resources"/>
+        </copy>
+-->
+        <!-- End test case build -->
+        
+    </target>
+
+
+    <target name="jar" depends="init,compile">
+        <mkdir dir="${build.platform.dir}/lib"/>
+        <jar compress="${jar.compress}" jarfile="${build.platform.dir}/lib/lg3d-demo-apps.jar">
+            <manifest>
+            </manifest>
+            <fileset dir="${build.classes.dir}/"/>
+            <!--<fileset dir="${src.dir}"
+ 		includes="org/jdesktop/lg3d/apps/**/*.java"/>-->
+                 <!--            <fileset dir="${src.dir}"
+		includes="resources/images/**,
+			  resources/core-gestures.gsa,
+                          resources/models/pingiun/**,
+                          etc/lg3d/**"/>
+                          -->
+        </jar>
+
+    </target>
+
+	<target name="release-demoapps" depends="jar">
+      <copy todir="${release.dir.lg3d}/lib"
+	  file="${build.platform.dir}/lib/lg3d-demo-apps.jar"/>
+	</target>
+
+    <target name="run-swingtest" depends="init">
+        <java classname="org.jdesktop.lg3d.apps.swingtest.TestFrame" fork="true">
+	    <jvmarg value="-Xdebug"/>
+	    <jvmarg value="-Xrunjdwp:transport=dt_socket,server=y,address=8888,suspend=n"/> 
+            <classpath>
+		<pathelement location="${build.platform.dir}/lib/lg3d-demo-apps.jar"/>
+	    </classpath>
+	</java>
+    </target>
+
+    <target name="clean" description="Clean all build products.">
+        <delete dir="${build.platform.dir}"/>
+    </target>
+
+</project>

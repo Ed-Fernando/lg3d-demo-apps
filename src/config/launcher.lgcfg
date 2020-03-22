@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0" class="java.beans.XMLDecoder"> 
+ <object class="org.jdesktop.lg3d.scenemanager.config.ApplicationDescription"> 
+  <void property="exec"> 
+   <string>java org.jdesktop.lg3d.apps.launcher.LauncherFrame</string> 
+  </void> 
+  <void property="iconURL"> 
+   <string>resource:///org/jdesktop/lg3d/apps/launcher/resources/launcher.png</string>
+  </void> 
+  <void property="name"> 
+   <string>Application Launcher</string>
+  </void> 
+ </object>
+</java>
+

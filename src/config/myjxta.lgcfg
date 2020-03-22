@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.5.0" class="java.beans.XMLDecoder">
+ <!--<object class="org.jdesktop.lg3d.scenemanager.config.ApplicationDescription">
+  <void property="exec">
+   <string>javaws http://download.java.net/jxta/build/nightly/jnlp/myjxta.jnlp</string>
+  </void>
+  <void property="iconFilename">
+   <string>resource:///resources/images/icon/myjxta.png</string>
+  </void>
+  <void property="name">
+   <string>MyJXTA</string>
+  </void>
+ </object>-->
+ <!-- Start Menu item -->
+ <object class="org.jdesktop.lg3d.scenemanager.utils.startmenu.StartMenuItemConfig">
+  <void property="command">
+   <string>javaws http://download.java.net/jxta/build/nightly/jnlp/myjxta.jnlp</string>
+  </void>
+  <void property="desc">
+   <string>MyJXTA IM</string>
+  </void>
+  <void property="displayResourceType">
+   <string>ICON</string>
+  </void>
+  <void property="displayResourceUrlName">
+   <string>resource:///resources/images/icon/myjxta.png</string>
+  </void>
+  <void property="menuGroup">
+   <string>Internet</string>
+  </void>
+  <void property="name">
+   <string>MyJXTA</string>
+  </void>
+ </object>
+</java>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0" class="java.beans.XMLDecoder"> 
+ <object class="org.jdesktop.lg3d.scenemanager.config.ApplicationDescription"> 
+  <void property="exec"> 
+   <string>java org.jdesktop.lg3d.tests.issue381.Issue381</string> 
+  </void> 
+  <void property="iconFilename"> 
+   <string>org/jdesktop/lg3d/tests/resources/icons/issue381.png</string> 
+  </void> 
+  <void property="name"> 
+   <string>Issue 381</string> 
+  </void> 
+ </object> 
+</java> 

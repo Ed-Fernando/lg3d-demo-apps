@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0" class="java.beans.XMLDecoder"> 
+ <!--<object class="org.jdesktop.lg3d.scenemanager.config.ApplicationDescription"> 
+  <void property="exec"> 
+   <string>java org.jdesktop.lg3d.apps.tutorial.Tutorial1</string> 
+  </void> 
+  <void property="iconFilename"> 
+   <string>org/jdesktop/lg3d/apps/screencapture/resources/snapshot.png</string> 
+  </void> 
+  <void property="name"> 
+   <string>Screen Snapshot</string> 
+  </void> 
+ </object> -->
+ <object class="org.jdesktop.lg3d.scenemanager.utils.startmenu.StartMenuItemConfig">
+  <void property="command">
+   <string>java org.jdesktop.lg3d.apps.screencapture.ScreenCaptureConfigFrame</string>
+  </void>
+  <void property="desc">
+   <string>Screen Snapshot</string>
+  </void>
+  <void property="displayResourceType">
+   <string>ICON</string>
+  </void>
+  <void property="displayResourceUrlName">
+   <string>resource:///org/jdesktop/lg3d/apps/screencapture/resources/snapshot.png</string>
+  </void>
+  <void property="menuGroup">
+   <string>Utilities</string>
+  </void>
+  <void property="name">
+   <string>Screen Snapshot</string>
+  </void>
+ </object>
+</java> 

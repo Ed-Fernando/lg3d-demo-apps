@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0" class="java.beans.XMLDecoder"> 
+ <object class="org.jdesktop.lg3d.scenemanager.config.ApplicationDescription"> 
+  <void property="exec"> 
+   <string>java org.jdesktop.lg3d.apps.help.Lg3dHelp</string> 
+  </void> 
+  <void property="iconFilename"> 
+   <string>resources/images/icon/lg3d-help.png</string> 
+  </void> 
+  <void property="name"> 
+   <string>Simple Sample Help</string> 
+  </void> 
+ </object> 
+</java> 

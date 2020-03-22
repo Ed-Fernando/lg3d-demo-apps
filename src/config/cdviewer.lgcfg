@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0" class="java.beans.XMLDecoder"> 
+ <object class="org.jdesktop.lg3d.scenemanager.config.ApplicationDescription"> 
+  <void property="exec"> 
+   <string>java org.jdesktop.lg3d.apps.cdviewer.CDViewer</string> 
+  </void> 
+  <void property="iconFilename"> 
+   <string>resources/images/icon/CD-s.png</string> 
+  </void> 
+  <void property="name"> 
+   <string>CD Viewer Sample</string> 
+  </void> 
+ </object> 
+</java> 
